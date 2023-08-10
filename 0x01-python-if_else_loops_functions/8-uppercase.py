@@ -2,9 +2,10 @@
 
 
 def uppercase(s):
+    result = ""
     for char in s:
-        if ord('a') <= ord(char) <= ord('z'):
-            print("{:c}".format(ord(char) - ord('a') + ord('A')), end="")
+        if 'a' <= char <= 'z':
+            result += "{:c}".format(ord(char) - ord('a') + ord('A'))
         else:
-            print("{:c}".format(ord(char)), end="")
-    print()
+            result += "{:c}".format(ord(char))
+    print(result)
