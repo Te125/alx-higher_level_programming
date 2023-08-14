@@ -2,10 +2,12 @@
 
 
 def print_matrix_integer(matrix=[[]]):
-    for row in matrix:
-        for i, number in enumerate(row):
-            if i == len(row) - 1:
-                print("{}".format(number))
+    for i in matrix:
+        number = 0
+        for j in i:
+            number += 1
+            if number == len(i):
+                print("{}".format(j))
             else:
-                print("{} ".format(number), end="")
-
+                print("{} ".format(j), end="")
+    print()
