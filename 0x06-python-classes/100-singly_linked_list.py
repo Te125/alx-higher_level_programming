@@ -1,14 +1,13 @@
 #!/usr/bin/python3
+""" Class square module """
 
 
 class Node:
-    """
-    This class defines a node of a singly linked list.
+    """ This class defines a node of a singly linked list.
     """
 
     def __init__(self, data, next_node=None):
-        """
-        Initializes a new Node instance.
+        """ Initializes a new Node instance.
 
         Args:
             data (int): The data to be stored in the node.
@@ -22,8 +21,7 @@ class Node:
 
     @property
     def data(self):
-        """
-        Get the data stored in the node.
+        """ Getter for the data stored in the node.
 
         Returns:
             int: The data stored in the node.
@@ -32,8 +30,7 @@ class Node:
 
     @data.setter
     def data(self, value):
-        """
-        Set the data stored in the node.
+        """ Set the data stored in the node.
 
         Args:
             value (int): The data to be stored in the node.
@@ -48,8 +45,7 @@ class Node:
 
     @property
     def next_node(self):
-        """
-        Get the next node in the linked list.
+        """ Getter for the next node in the linked list.
 
         Returns:
             Node: The next node in the linked list.
@@ -58,8 +54,7 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        """
-        Set the next node in the linked list.
+        """ Set the next node in the linked list.
 
         Args:
             value (Node): The next node in the linked list.
@@ -74,8 +69,7 @@ class Node:
 
 
 class SinglyLinkedList:
-    """
-    This class defines a singly linked list.
+    """ This class defines a singly linked list.
     """
 
     def __init__(self):
@@ -85,8 +79,7 @@ class SinglyLinkedList:
         self.head = None
 
     def sorted_insert(self, value):
-        """
-        Inserts a new Node into the correct sorted position in the list (increasing order).
+        """ Inserts a new Node into the correct sorted position in the list (increasing order).
 
         Args:
             value (int): The data to be stored in the new node.
@@ -106,8 +99,7 @@ class SinglyLinkedList:
         current.next_node = new_node
 
     def __str__(self):
-        """
-        Returns a string representation of the linked list.
+        """ Returns a string representation of the linked list.
 
         Returns:
             str: String representation of the linked list.
