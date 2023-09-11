@@ -50,13 +50,14 @@ class Rectangle:
         """ Returns the rectangle perimeter """
         if self.__width == 0 or self.__height == 0:
             return 0
-        return 2 * (self.__width + self.__height)
+        else:
+            return 2 * (self.__width + self.__height)
 
     def __str__(self):
         """ Displays the string """
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join(["#" * self.__width] * self.__height)
+        return "\n".join([str(self.print_symbol) * self.__width] * self.__height)
 
     def __repr__(self):
         """ Displays the representation of the object """
@@ -64,5 +65,5 @@ class Rectangle:
 
     def __del__(self):
         """ Prints message instance when deleted """
-        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
