@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+""" Class Rectangle """
+
+
+class Rectangle:
+    """ Defines Rectangle Class with attributes """
+    def __init__(self, width=0, height=0):
+        """ Initial Rectangle Class """
+        self.width = width
+        self.height = height
+
+    @property
+    def width(self):
+        """ Getter to retieve """
+        return self.__width
+
+    @width.setter
+    def width(self, value):
