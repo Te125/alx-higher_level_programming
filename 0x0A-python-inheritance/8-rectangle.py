@@ -17,6 +17,7 @@ class BaseGeometry:
             """ if value is less or equal to 0 """
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
     """ Instantation with width and height """
     def __init__(self, width, height):

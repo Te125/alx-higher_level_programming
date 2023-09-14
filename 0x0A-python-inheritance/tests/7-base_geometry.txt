@@ -11,74 +11,36 @@ Import the class:
 
 Now test it:
 
-    >>> bg = BaseGeometry()
+    >>> geometry = BaseGeometry()
 
-    >>> bg.integer_validator("my_int", 12)
-    
-    >>> bg.integer_validator("width", 89)
-
-    >>> bg.integer_validator("name", "John")
+    >>> geometry.area()
     Traceback (most recent call last):
-    TypeError: name must be an integer
-
-    >>> bg.integer_validator("age", 0)
-    Traceback (most recent call last):
-    ValueError: age must be greater than 0
-
-    >>> bg.integer_validator("distance", -4)
-    Traceback (most recent call last):
-    ValueError: distance must be greater than 0
-
-    >>> bg.area()
-    Traceback (most recent call last):
+    ...
     Exception: area() is not implemented
 
-    >>> bg.integer_validator("age")
+    >>> geometry.integer_validator("side_length", 10)
     Traceback (most recent call last):
-    TypeError: integer_validator() missing 1 required positional argument: 'value'
+    ...
+    AttributeError: 'BaseGeometry' object has no attribute 'integer_validator'
 
-    >>> bg.integer_validator()
+    >>> class CustomGeometry(BaseGeometry):
+    ...     pass
+
+    >>> custom_geometry = CustomGeometry()
+
+    >>> custom_geometry.area()
     Traceback (most recent call last):
-    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+    ...
+    Exception: area() is not implemented
 
-    >>> bg.integer_validator("age", [3])
+    >>> custom_geometry.integer_validator("side_length", 10)
+
+    >>> custom_geometry.integer_validator("side_length", "not_an_integer")
     Traceback (most recent call last):
-    TypeError: age must be an integer
+    ...
+    TypeError: side_length must be an integer
 
-    >>> bg.integer_validator("age", [3, 2])
+    >>> custom_geometry.integer_validator("side_length", -5)
     Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("age", (2, 3))
-    Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("age", (2, '3'))
-    Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("age", 5.2)
-    Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("age", True)
-    Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("age", None)
-    Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("age", {3, 2})
-    Traceback (most recent call last):
-    TypeError: age must be an integer
-
-    >>> bg.integer_validator("NaN", float('nan'))
-    Traceback (most recent call last):
-    TypeError: NaN must be an integer
-
-    >>> bg.integer_validator("Big", 12000000000000000000000000000000000000000000000000000000000000000000000000000000000)
-
-    >>> bg.integer_validator("age", (4,))
-    Traceback (most recent call last):
-    TypeError: age must be an integer
+    ...
+    ValueError: side_length must be greater than 0

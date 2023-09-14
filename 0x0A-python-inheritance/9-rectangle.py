@@ -18,6 +18,7 @@ class BaseGeometry:
             """ If value is less or equal to 0 """
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
     """ Class wth width and height """
     def __init__(self, width, height):
