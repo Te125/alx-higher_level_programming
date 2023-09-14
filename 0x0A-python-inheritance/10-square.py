@@ -40,6 +40,7 @@ class Square(Rectangle):
     """ Inherits from rectangle class """
     def __init__(self, size):
         """ Defining with size """
+        self.integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
 
