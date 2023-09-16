@@ -7,9 +7,9 @@ def append_write(filename="", text=""):
     try:
         """ opening file in append mode """
         with open(filename, mode="a", encoding="utf-8") as file:
-            num_chars_added = file.append(text)
+            num_chars_added = file.write(text)
             """ return the number of characters added """
         return num_chars_added
     except Exception:
         """ if error occurs while appending """
-        return 0
+        return file
