@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 """ Function that returns the json representation of an object """
 import json
 
