@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+""" script that adds all arguments """
+
+import sys
+import json
+
+
+def save_to_json_file(my_obj, filename):
+    """ function definition """
+    with open(filename, mode="w", encoding="utf-8") as file:
+        """ open and close file and write to it in write mode """
+        json.dump(my_obj, file)
+
+
+def load_from_json_file(filename):
+    """ load function definitio """
+    """ open and close file and read with read mode """
+    with open(filename, mode="r", encoding="utf-8") as file:
+        """ return file load """
+        data = json.load(file)
+    return data
+
+
+def main():
+    """ main function definition """
+    args_list = []
+    """ load command line arguments """
+    for arg in sys.argv[1:]:
+        args_list.append(arg)
+    try:
+        existing_data = load_from_json_file("add_item.json")
+        """ load existing data from add_item.py if it exists """
+    except (FileNotFoundError, json.JSONdecodeError):
+        """ if data does not exist """
+        existing_data = []
+    combined_list = existing_data + args_list
+    """ combine the existing data from new arguments """
+    save_to_json_file(combined_list, "add_item.json")
+    """ save combined file to add_item.py """
+
+
+if __name__ == "__main__":
+    main()
