@@ -30,7 +30,7 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
-        """ Update the Square attributes with the provided arguments or key/value pairs.
+        """ Square attributes with the provided arguments
 
         Args:
             *args: List of positional arguments in the order (id, size, x, y).
@@ -48,7 +48,7 @@ class Square(Rectangle):
                 setattr(self, key, value)
 
     def __str__(self):
-        """Override the __str__ method to return a custom string representation."""
+        """Override the __str__ method to return a custom str rep """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     def to_dictionary(self):
