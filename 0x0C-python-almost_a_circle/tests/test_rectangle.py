@@ -57,15 +57,19 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = self.stdout_backup
 
     def test_display_method(self):
-        """ Create an instance of Rectangle """
-        rect = Rectangle(4, 3, 1, 2)
-        """ Capture the output of the display method """
-        rect.display()
-        displayed_output = self.stdout_capture.getvalue()
+        """ Create an instance of the rectangle class """
+        rectangle = Rectangle(1, 2, 3, 4, 2)
         """ Define the expected output """
-        expected_output = "####\n####\n####\n"
-        """ Check if the captured output matches the expected output """
-        self.assertEqual(displayed_output, expected_output)
+        expected_output = "\n$\n$\n  ##$\n  ##$\n  ##$\n---$\n ###$\n ###$"
+        """ Define the display method """
+        rectangle.display()
+        """ Capture the actal printed output """
+        actual_output = sys.stdout.getvalue().strip()
+        expected_output_lines = expected_output.split('\n')
+        """ Adjust expected output """
+        adjusted_expected_output = '\n'.join(line.lstrip() for line in expected_output_lines)
+        """ Compare the actual and expected outcome """
+        self.assertEqual(actual_output, adjusted_expected_output)
 
     def test_str_method(self):
         """ Create an instance of Rectangle """
