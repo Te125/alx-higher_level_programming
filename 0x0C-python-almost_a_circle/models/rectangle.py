@@ -91,3 +91,38 @@ class Rectangle(Base):
         """ prints in stdout rectangle instance with the character # """
         for _ in range(self.__height):
             print("#" * self.__width)
+
+    def update(self, *args):
+        """ Update the Rectangle attributes with the provided arguments in order.
+
+        Args:
+            *args: Variable number of arguments in the order (id, width, height, x, y).
+        """
+        if args:
+            attributes = ["id", "width", "height", "x", "y"]
+            """ loop throught the arguments """
+            for i, arg in enumerate(args):
+                if i < len(attributes):
+                    setattr(self, attributes[i], arg)
+        else:
+            """ loop through kwargs """
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def __str__(self):
+        """Override the __str__ method to return a custom string representation """
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+
+    def to_dictionary(self):
+        """Return a dictionary representation of the Rectangle.
+
+        Returns:
+            dict: A dictionary containing id, width, height, x, and y attributes.
+        """
+        return {
+            'id': self.id,
+            'width': self.__width,
+            'height': self.__height,
+            'x': self.__x,
+            'y': self.__y
+        }

@@ -43,7 +43,6 @@ class TestRectangle(unittest.TestCase):
     def test_area_calculation(self):
         """ Create an instance of Rectangle with known dimensions """
         rect = Rectangle(4, 6, 2, 3, 1)
-        
         """ Calculate the area and check if it matches the expected result """
         self.assertEqual(rect.area(), 24)
 
@@ -59,17 +58,30 @@ class TestRectangle(unittest.TestCase):
 
     def test_display_method(self):
         """ Create an instance of Rectangle """
-        rect = Rectangle(4, 3)
-        
+        rect = Rectangle(4, 3, 1, 2)
         """ Capture the output of the display method """
         rect.display()
         displayed_output = self.stdout_capture.getvalue()
-        
         """ Define the expected output """
         expected_output = "####\n####\n####\n"
-        
         """ Check if the captured output matches the expected output """
         self.assertEqual(displayed_output, expected_output)
+
+    def test_str_method(self):
+        """ Create an instance of Rectangle """
+        rect = Rectangle(4, 3, 1, 2, 7)
+        """ Get the string representation """
+        str_representation = str(rect)
+        """ Define the expected string representation """
+        expected_str = "[Rectangle] (7) 1/2 - 4/3"
+        """ Check if the generated string matches the expected string """
+        self.assertEqual(str_representation, expected_str)
+
+    def test_area_calculation(self):
+        """ Create an instance of Rectangle with known dimensions """
+        rect = Rectangle(4, 6)
+        """ Calculate the area and check if it matches the expected result """
+        self.assertEqual(rect.area(), 24)
 
 
 if __name__ == '__main__':
