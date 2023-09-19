@@ -89,24 +89,10 @@ class Rectangle(Base):
 
     def display(self):
         """ prints in stdout rectangle instance with the character # """
-        for i in range(self.y):
+        for _ in range(self.y):
             print()
-        for i in range(self.height):
-            """ loop through the object """
-            for j in range(self.x):
-                if j == 0 or j == self.width - 1:
-                    print("#", end="")
-                else:
-                    print("$", end="")
-            print("#")
-        """ Loop through to check if object is in range """
-        for i in range(self.y + self.height, self.y + self.height + self.width):
-            print("#", end="")
-            if i == self.y + self.height:
-                print("-" * self.width, end="")
-            else:
-                print("$" * (self.width - 2), end="")
-            print("#")
+        for _ in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
 
     def update(self, *args):
         """ Update rectangle attributes with the provided arguments
