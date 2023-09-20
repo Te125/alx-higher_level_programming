@@ -94,21 +94,35 @@ class Rectangle(Base):
         for _ in range(self.__height):
             print(" " * self.__x + "#" * self.__width)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Update rectangle attributes with the provided arguments
         Args:
             *args: Variable number of arguments in the order
         """
         if args:
-            attributes = ["id", "width", "height", "x", "y"]
-            """ loop throught the arguments """
-            for i, arg in enumerate(args):
-                if i < len(attributes):
-                    setattr(self, attributes[i], arg)
-        else:
-            """ loop through kwargs """
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+            if len(args) >= 3:
+                self.height = args[2]
+            if len(args) >= 4:
+                self.x = args[3]
+            if len(args) >= 5:
+                self.y = args[4]
+        elif kwargs:
+            """ loop through the items """
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if key == 'id':
+                    self.id = value
+                elif key == 'width':
+                    self.width = value
+                elif key == 'height':
+                    self.height = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value
 
     def __str__(self):
         """Override the __str__ method to return a custom str rep """

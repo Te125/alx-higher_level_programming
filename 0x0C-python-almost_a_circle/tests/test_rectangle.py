@@ -86,6 +86,17 @@ class TestRectangle(unittest.TestCase):
         """ Calculate the area and check if it matches the expected result """
         self.assertEqual(rect.area(), 24)
 
+    def test_update_method_with_kwargs(self):
+        """ Create an instance of the rectangle """
+        r = Rectangle(1, 2, 3, 4, 5)
+        """ Update the rectangle with objects """
+        r.update(id=10, width=20, height=30, x=40, y=50)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
+
 
 if __name__ == '__main__':
     unittest.main()
