@@ -116,7 +116,44 @@ class TestBase(unittest.TestCase):
         """ Check the method for invalid class """
         d_dict = {'id': 3, 'name': 'Alice'}
         d = Base.create(**d_dict)
-        self.assertIsNone(d)    
+        self.assertIsNone(d)
+
+    def test_load_from_file_with_nonexistent_file(self):
+        """ Check if the instance file does not exist """
+        self.assertEqual(Base.load_from_file(), [])
+
+    def test_load_from_file_with_rectangles(self):
+        """ Check the instance in the rectangle """
+        r1 = Rectangle(10, 20)
+        """ set id value """
+        r1.id = 1 
+        r2 = Rectangle(5, 15)
+        Rectangle.save_to_file([r1, r2])
+        """ Load the rectangle and compare it with the file """
+        loaded_rectangles = Rectangle.load_from_file()
+        self.assertEqual(len(loaded_rectangles), 2)
+        self.assertEqual(loaded_rectangles[0].id, 1)
+        self.assertEqual(loaded_rectangles[1].width, 5)
+
+    def test_load_from_file_with_squares(self):
+        """ Check the instance in the square """
+        s1 = Square(5)
+        """ Set id value """
+        s1.id = 1
+        s2 = Square(8)
+        Square.save_to_file([s1, s2])
+        """ Load th squares and compare """
+        loaded_squares = Square.load_from_file()
+        self.assertEqual(len(loaded_squares), 2)
+        self.assertEqual(loaded_squares[0].id, 1)
+        self.assertEqual(loaded_squares[1].size, 8)
+
+    def tearDown(self):
+        """ Check the paths if they exist """
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
 
 if __name__ == '__main__':
     unittest.main()

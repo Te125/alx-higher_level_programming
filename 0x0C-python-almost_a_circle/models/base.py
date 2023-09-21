@@ -88,3 +88,18 @@ class Base:
         """ create an update to dictionary """
         attrs = ["id", "width", "height", "x", "y"] if cls.__name__ == 'Rectangle' else ["id", "size", "x", "y"]
         return {attr: getattr(self, attr) for attr in attrs}
+
+    @classmethod
+    def load_from_file(cls):
+        """ method that returns a list of instances """
+        filename = "{}.json".format(cls.__name__)
+        try:
+            with open(filename, 'r') as file:
+                json_string = file.read()
+                list_dicts = cls.from_json_string(json_string)
+                instances = [cls.create(**d) for d in list_dicts]
+                """ Reset the nb objects to ensure new id values """
+                cls.__nb_objects = max(obj.id for obj in instances) if instances else 0
+                return instances
+        except FileNotFoundError:
+            return []
