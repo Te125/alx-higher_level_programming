@@ -62,7 +62,6 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ method that returns an instance with all attributes """
-        print("Creating with class:", cls.__name__)
         if cls.__name__ == 'Rectangle':
             dummy_instance = cls(1, 1)
             """ assign all attributes with dummy instance """
