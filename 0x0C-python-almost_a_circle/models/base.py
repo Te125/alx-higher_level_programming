@@ -51,3 +51,41 @@ class Base:
             file.write(json_string)
 
         Base.__nb_objects = 0
+
+    @staticmethod
+    def from_json_string(json_string):
+        """ Method that parses a json string representation into a list """
+        if json_string is None or json_string == "":
+            return []
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ method that returns an instance with all attributes """
+        print("Creating with class:", cls.__name__)
+        if cls.__name__ == 'Rectangle':
+            dummy_instance = cls(1, 1)
+            """ assign all attributes with dummy instance """
+        elif cls.__name__ == 'Square':
+            dummy_instance = cls(1)
+        else:
+            return None
+        """ Update the instance attributes using provided dictionary """
+        dummy_instance.update(**dictionary)
+
+        return dummy_instance
+
+    def update(self, *args, **kwargs):
+        """ Method to update dictionary """
+        if args:
+            attrs = ["id", "width", "height", "x", "y"] if cls.__name__ == 'Rectangle' else ["id", "size", "x", "y"]
+            for i, arg in enumerate(args):
+                setattr(self, attrs[i], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """ create an update to dictionary """
+        attrs = ["id", "width", "height", "x", "y"] if cls.__name__ == 'Rectangle' else ["id", "size", "x", "y"]
+        return {attr: getattr(self, attr) for attr in attrs}

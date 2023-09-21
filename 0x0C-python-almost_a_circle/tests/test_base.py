@@ -80,5 +80,43 @@ class TestBase(unittest.TestCase):
         if os.path.exists("Square.json"):
             os.remove("Square.json")
 
+    def test_from_json_string_with_empty_string(self):
+        """ Define the list of instances in an empty string """
+        json_string = ""
+        self.assertEqual(Base.from_json_string(json_string), [])
+
+    def test_from_json_string_with_json_list(self):
+        """ Check the instance ID with its objects """
+        json_string = '[{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]'
+        result = Base.from_json_string(json_string)
+        """ Check if the instaance specifies an object """
+        self.assertEqual(len(result), 2)
+        self.assertEqual(result[0]['id'], 1)
+        self.assertEqual(result[1]['name'], 'Jane')
+
+    def test_create_method_with_rectangle(self):
+        """ Create an instance with atributes """
+        r_dict = {'id': 1, 'width': 5, 'height': 10}
+        r = Rectangle.create(**r_dict)
+        """ Check the provided attributes of the dictionary """
+        self.assertIsInstance(r, Rectangle)
+        self.assertEqual(r.id, 1)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 10)
+
+    def test_create_method_with_square(self):
+        """ Check the dictionary attributes """
+        s_dict = {'id': 2, 'size': 7}
+        s = Square.create(**s_dict)
+        self.assertIsInstance(s, Square)
+        self.assertEqual(s.id, 2)
+        self.assertEqual(s.size, 7)
+
+    def test_create_method_with_invalid_class(self):
+        """ Check the method for invalid class """
+        d_dict = {'id': 3, 'name': 'Alice'}
+        d = Base.create(**d_dict)
+        self.assertIsNone(d)    
+
 if __name__ == '__main__':
     unittest.main()
